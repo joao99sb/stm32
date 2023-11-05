@@ -45,21 +45,21 @@
 
 #define __IO volatile
 
-// typedef struct
-// {
-//   __IO uint32_t DUMMY[2]; /*!< Reserved, 0x28-0x2C                                                               */
-//   __IO uint32_t AHB1ENR;  /*!< RCC AHB1 peripheral clock register,                          Address offset: 0x30 */
-// } RCC_TypeDef;
+typedef struct
+{
+  __IO uint32_t DUMMY[2]; /*!< Reserved, 0x28-0x2C                                                               */
+  __IO uint32_t AHB1ENR;  /*!< RCC AHB1 peripheral clock register,                          Address offset: 0x30 */
+} RCC_TypeDef;
 
-// typedef struct
-// {
+typedef struct
+{
 
-//   __IO uint32_t MODER; // GPIO port mode regiser                     address offset: 0x00
+  __IO uint32_t MODER; // GPIO port mode regiser                     address offset: 0x00
 
-//   __IO uint32_t DUMMY[4];
-//   __IO uint32_t ODR; // GPIO port output data register             address offset: 0x14
+  __IO uint32_t DUMMY[4];
+  __IO uint32_t ODR; // GPIO port output data register             address offset: 0x14
 
-// } GPIO_TypeDef;
+} GPIO_TypeDef;
 
 int main(void)
 {
