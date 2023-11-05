@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 // port C
 // pin 13
 
@@ -27,7 +29,7 @@
 #define MODE_R_OFFSET (0X00UL)
 #define GPIOC_MODE_R (*(volatile unsigned int *)(GPIOC_BASE + MODE_R_OFFSET))
 
-//search in reference manula ODR
+// search in reference manula ODR
 #define OD_R_OFFSET (0X14UL)
 #define GPIOC_OD_R (*(volatile unsigned int *)(GPIOC_BASE + OD_R_OFFSET)) // output data register
 
@@ -38,9 +40,19 @@
 
 #define GPIOCEN (1U << 2) // 0b00100
 
-#define PIN13 (1U << 12)
+#define PIN13 (1U << 13)
 #define LED_PIN PIN13
 
+// Asm codes
+#define NOP() asm volatile("nop")
+
+void delay(uint32_t time)
+{
+  while (time--)
+  {
+    NOP();
+  }
+}
 
 int main(void)
 {
@@ -55,7 +67,7 @@ int main(void)
   while (1)
   {
     // set P13 high
-    GPIOC_OD_R ^=  LED_PIN;
+    GPIOC_OD_R &= ~LED_PIN;
   }
   return 0; //
 }
