@@ -97,16 +97,20 @@ void config(void)
   config_input();
 }
 
-void blink(void)
+void blink(uint8_t time)
 {
-  GPIOC_OD_R &= ~LED_PIN;
-  GPIOA_OD_R &= ~PIN12; // led turn off when bit is high
 
-  delay(1000000);
+  while (--time)
+  {
+    GPIOC_OD_R &= ~LED_PIN;
+    GPIOA_OD_R &= ~PIN12; // led turn off when bit is high
 
-  GPIOA_OD_R |= PIN12; // led turn on when bit is high
-  GPIOC_OD_R |= LED_PIN;
-  delay(1000000);
+    delay(1000000);
+
+    GPIOA_OD_R |= PIN12; // led turn on when bit is high
+    GPIOC_OD_R |= LED_PIN;
+    delay(1000000);
+  }
 }
 
 int main(void)
@@ -119,7 +123,7 @@ int main(void)
     uint32_t has_input_A7 = GPIOA_ID_R & PIN7;
     if (has_input_A7)
     {
-      blink();
+      blink(10);
     }
     else
     {
