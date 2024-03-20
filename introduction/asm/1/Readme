@@ -1,0 +1,16 @@
+# how to compile
+
+arm-none-eabi-gcc -x assembler-with-cpp -c -O0 -mcpu=cortex-m0 -mthumb -Wall core.s -o core.o
+
+arm-none-eabi-gcc core.o -mcpu=cortex-m4 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -T./linker.ld -o main.elf
+
+# debug
+st-util
+
+arm-none-eabi-gdb main.elf
+
+(gdb) target extended-remote :4242
+(gdb) load
+(gdb) continue
+
+(gdb) info registers

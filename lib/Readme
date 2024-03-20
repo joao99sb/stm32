@@ -1,0 +1,21 @@
+# how to compile
+
+arm-none-eabi-gcc -x assembler-with-cpp -c -O0 -mcpu=cortex-m0 -mthumb -Wall core.s -o core.o
+
+arm-none-eabi-gcc core.o -mcpu=cortex-m4 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -T./linker.ld -o main.elf
+
+# debug
+
+st-util
+
+arm-none-eabi-gdb main.elf
+
+(gdb) target extended-remote :4242
+(gdb) load
+(gdb) continue
+
+(gdb) info registers
+
+# sintaxe
+
+ALIGN(4): Esta instrução alinha o próximo endereço de memória a um múltiplo de 4 bytes. Isso é importante para garantir que os dados sejam alinhados corretamente na memória, o que pode ser necessário para o funcionamento correto do microcontrolador
