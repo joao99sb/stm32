@@ -1,17 +1,5 @@
 #include "./core.h"
 
-// port C
-// pin 13
-
-// Memory map
-// BLOCK DIAGRAM
-
-// BUS TO CONNECT THIS PIN IN CLOCK IS AHB1
-
-// RCC config clocks sistem
-
-// to enable AHB1, search in reference manula AHB1EN
-
 void configureCPin()
 {
   // enable clock access to GPIOC

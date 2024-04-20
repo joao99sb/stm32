@@ -1,1 +1,0 @@
-ENTRY(reset_handler)
