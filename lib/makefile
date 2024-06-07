@@ -2,7 +2,7 @@ TARGET = main
 
 # Define the linker script location and chip architecture.
 LD_SCRIPT = linker.ld
-MCU_SPEC = cortex-m0
+MCU_SPEC = cortex-m4
 
 # Toolchain definitions (ARM bare metal defaults)
 TOOLCHAIN = /usr
@@ -28,7 +28,8 @@ CFLAGS += -g
 # (Set error messages to appear on a single line.)
 CFLAGS += -fmessage-length=0
 # (Set system to ignore semihosted junk)
-CFLAGS += --specs=nosys.specs
+# CFLAGS += --specs=nosys.specs
+CFLAGS += -I/usr/lib/gcc/arm-none-eabi/14.1.0/include/
 
 # Linker directives.
 LSCRIPT = ./$(LD_SCRIPT)

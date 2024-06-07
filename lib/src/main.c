@@ -1,39 +1,19 @@
 #include "./core.h"
+#include "./GPIO.h"
 
-// port C
-// pin 13
-
-// Memory map
-// BLOCK DIAGRAM
-
-// BUS TO CONNECT THIS PIN IN CLOCK IS AHB1
-
-// RCC config clocks sistem
-
-// to enable AHB1, search in reference manula AHB1EN
-
-void configureCPin()
-{
-  // enable clock access to GPIOC
-  RCC->AHB1ENR |= GPIOCEN;
-
-  // set P13 as output pin
-
-  GPIOC->MODER |= (1U << 26);
-  GPIOC->MODER &= ~(1U << 27);
-}
+// #define SCREEN_ADDRESS 0x3C
 
 int main(void)
 {
 
-  configureCPin();
+  configPin(PORTC, OUTPUT, LED_PIN);
 
   while (1)
   {
-    GPIOC->ODR &= ~LED_PIN; // Ligar o LED (nível lógico baixo)
 
+    setPin(PORTC, LED_PIN, LOW);
     delay(1000000);
-    GPIOC->ODR |= LED_PIN;
+    setPin(PORTC, LED_PIN, HIGH);
     delay(1000000);
   }
   return 0;

@@ -65,15 +65,15 @@ void configureCPin()
 int main(void)
 {
 
-  configureCPin();
+  // configureCPin();
  
-  while (1)
-  {
-    GPIOC_OD_R &= ~LED_PIN; // Ligar o LED (nível lógico baixo)
+  // while (1)
+  // {
+  //   GPIOC_OD_R &= ~LED_PIN; // Ligar o LED (nível lógico baixo)
 
-    delay(1000000);
-    GPIOC_OD_R |= LED_PIN;
-    delay(1000000);
-  }
+  //   delay(1000000);
+  //   GPIOC_OD_R |= LED_PIN;
+  //   delay(1000000);
+  // }
   return 0;
 }
