@@ -25,26 +25,9 @@
 #define I2C1_OFFSET (0x5400UL)
 #define I2C1_BASE (APB1PERIPH_BASE + I2C1_OFFSET)
 
-#define GPIOBEN (1U << 1) // 0b00010
-#define GPIOCEN (1U << 2) // 0b00100
 #define I2C1EN (1U << 21)
 
-
 // BUS AHB1 STRUCT
-
-typedef struct
-{
-  volatile uint32_t MODER;   // MODE REGISTER                      addr offset: 0x00
-  volatile uint32_t OTYPER;  // PORT OUTPUT TYPE REGISTER          addr offset: 0x04
-  volatile uint32_t OSPEEDR; // PORT OUTPUT SPEED REGISTER         addr offset: 0x08
-  volatile uint32_t PUPDR;   // PORT PULL-UP//PULL-DOW             addr offset: 0x0C
-  volatile uint32_t IDR;     // PORT INPUT DATA REGISTER           addr offset: 0x10
-  volatile uint32_t ODR;     // PORT OUTPUT DATA REGISTER          addr offset: 0x14
-  volatile uint32_t ESRR;    // PORT BIT SET/RESET REGISTER        addr offset: 0x18
-  volatile uint32_t LCKR;    // PORT CONFIGURATION LOCK REGISTER   addr offset: 0x1C
-  volatile uint32_t ARF[2];  // ALTERNATE FUNCTION REGISTER        addr offset: 0x20-0X24
-
-} GPIO_TYPE;
 
 typedef struct
 {
@@ -55,26 +38,9 @@ typedef struct
 
 } RCC_TYPE;
 
-#define GPIOC ((GPIO_TYPE *)GPIOC_BASE)
-#define GPIOB ((GPIO_TYPE *)GPIOB_BASE)
-
 #define RCC ((RCC_TYPE *)RCC_BASE)
 
 // BUS APB1 STRUCT
-
-typedef struct
-{
-  volatile uint32_t CR1;   // CONTROL REGISTER 1
-  volatile uint32_t CR2;   // CONTROL REGISTER 2
-  volatile uint32_t OAR1;  // OWN ADDRESS REGISTER 1
-  volatile uint32_t OAR2;  // OWN ADDRESS REGISTER 2
-  volatile uint32_t DR;    // DATA REGISTER
-  volatile uint32_t SR1;   // STATUS REGISTER 1
-  volatile uint32_t SR2;   // STATUS REGISTER 2
-  volatile uint32_t CCR;   // CLOCK CONTROL REGISTER
-  volatile uint32_t TRISE; // TRISE REGISTER
-  volatile uint32_t FLTR;  // FLTR REGISTER
-} I2C_TYPE;
 
 // asm code
 #define NOP() asm volatile("nop")
