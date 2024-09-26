@@ -6,7 +6,7 @@ use hal::pac;
 use hal::pac::{interrupt, Interrupt};
 use hal::prelude::*;
 use stm32f4xx_hal as hal;
-use stm32f4xx_hal::gpio::{gpioc, PinState};
+use stm32f4xx_hal::gpio::PinState;
 
 use cortex_m::interrupt::Mutex;
 use hal::pac::TIM2;
@@ -60,7 +60,7 @@ impl Throttler {
         true
     }
 }
-static mut LS_COMMAND: [Keyboard; 2] = [Keyboard::L, Keyboard::S];
+static mut LS_COMMAND: [Keyboard; 3] = [Keyboard::L, Keyboard::S, Keyboard::ReturnEnter];
 
 #[interrupt]
 fn TIM2() {
@@ -77,8 +77,6 @@ pub fn start() -> ! {
     rtt_init_print!();
 
     rprintln!("Testing USB functionality!");
-
-    let keyboard_command = [Keyboard::LeftControl, Keyboard::LeftAlt, Keyboard::T];
 
     let dp = pac::Peripherals::take().unwrap();
 
@@ -132,7 +130,7 @@ pub fn start() -> ! {
     loop {
         let is_high = button.is_high().unwrap();
         let keys = if is_high {
-            keyboard_command
+            unsafe { LS_COMMAND }
         } else {
             [
                 Keyboard::NoEventIndicated,

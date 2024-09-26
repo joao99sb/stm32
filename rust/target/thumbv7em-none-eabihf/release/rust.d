@@ -1,1 +1,0 @@
-/home/joao99sb/code/embedded_system/stm32/rust/target/thumbv7em-none-eabihf/release/rust: /home/joao99sb/code/embedded_system/stm32/rust/src/app.rs /home/joao99sb/code/embedded_system/stm32/rust/src/main.rs

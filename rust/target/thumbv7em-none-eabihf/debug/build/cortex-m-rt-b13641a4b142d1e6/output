@@ -1,6 +1,0 @@
-cargo:rustc-cfg=cortex_m
-cargo:rustc-cfg=armv7m
-cargo:rustc-cfg=has_fpu
-cargo:rustc-link-search=/home/joao99sb/code/embedded_system/stm32/rust/target/thumbv7em-none-eabihf/debug/build/cortex-m-rt-b13641a4b142d1e6/out
-cargo:rerun-if-changed=build.rs
-cargo:rerun-if-changed=link.x.in

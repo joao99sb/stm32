@@ -1,3 +1,0 @@
-cargo:rustc-link-search=/home/joao99sb/code/embedded_system/stm32/rust/target/thumbv7em-none-eabihf/debug/build/stm32f4-1a61058e21a8a078/out
-cargo:rerun-if-changed=src/stm32f411/device.x
-cargo:rerun-if-changed=build.rs
